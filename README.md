@@ -34,3 +34,13 @@ Your app is ready to be deployed!
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
 
 ## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
+
+### Pokedex Project
+## Provides the interactive interface of a Pokedex
+
+#Tools Used:
+1. SolidJS
+2. Typescript
+3. TailwindCSS
+4. CSS
+5. HTML
