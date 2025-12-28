@@ -3,9 +3,9 @@ import './index.css';
 import { render } from 'solid-js/web';
 import 'solid-devtools';
 
-import Pokedex from './App';
+import Pokedex from './closed';
 
-const root = document.getElementById('root');
+const root: HTMLElement | null = document.getElementById('root');
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   throw new Error(
@@ -13,4 +13,4 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-render(() => <Pokedex />, root!);
+render(() => <Pokedex />, document.getElementById("root") as HTMLElement);

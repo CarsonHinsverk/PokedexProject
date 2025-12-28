@@ -5,12 +5,14 @@
         --red: hsl(351, 82%, 46%);
         --light-red: hsl(351, 82%, 56%);
         --dark-red: hsl(351, 82%, 21%);
-        --black: hsl(0, 0%, 15%);
+        --black: hsl(0, 0%, 5%);
+        --dark-grey: hsl(0, 0%, 35%);
+        --grey: hsl(0, 0%, 55%);
         --white: hsl(0, 0%, 88%);
 
-        --blue: hsl(190, 100%, 60%);
-        --blue-gradient: hsl(190, 100%, 48%);
-        --dark-blue: hsl(190, 100%, 40%);
+        --blue: hsl(190, 100%, 50%);
+        --blue-gradient: hsl(190, 100%, 40%);
+        --dark-blue: hsl(190, 100%, 35%);
         --red-light: hsl(0, 100%, 45%);
         --red-light-gradient: hsl(0, 100%, 40%);
         --yellow-light: hsl(60, 100%, 45%);
@@ -54,4 +56,10 @@
         min-height: 100vh;
         width: 100%;
     }
+}
+
+@keyframes screen-flicker {
+    0%   { opacity: 0.20; }
+    50%  { opacity: 0.30; }
+    100% { opacity: 0.20; }
 }
