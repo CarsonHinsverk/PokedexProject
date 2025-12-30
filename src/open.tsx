@@ -81,7 +81,7 @@ export default function openPokedex(): JSXElement {
                         after:bg-[linear-gradient(to_bottom,rgba(0,0,0,0.25)_1px,rgba(0,0,0,0)_1px)] after:bg-[length:100%_3px]
                         after:animate-[screen-flicker_0.10s_infinite]
                         
-                        before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:z-[350] before:bg-[length:3px_100%]
+                        before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:z-[350] before:bg-[length:1px_100%]
                         before:bg-[linear-gradient(to_right,rgba(0,255,120,0.08)_0%,rgba(0,255,120,0.08)_50%,rgba(0,0,0,0)_50%,rgba(0,0,0,0)_100%)]
                         before:mix-blend-difference before:opacity-0">
 
@@ -285,8 +285,8 @@ async function fetchPokemon(): Promise<any> {
         const nameInput = document.getElementById(`name-input`) as HTMLInputElement;
         const pokemonName: string = nameInput?.value.toLowerCase();
 
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-        const data = await response.json();
+        const response: Response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+        const data: any = await response.json();
 
         return data
     }
@@ -295,9 +295,9 @@ async function fetchPokemon(): Promise<any> {
 async function spriteGrab(): Promise<void> {
     const spriteScreen = document.getElementById(`sprite`) as HTMLImageElement
     try {
-        const pokemonData = await fetchPokemon() 
+        const pokemonData: any = await fetchPokemon() 
 
-        const sprite = pokemonData.sprites.front_default;
+        const sprite: any = pokemonData.sprites.front_default;
         spriteScreen.src = sprite
     }
     catch {
@@ -308,9 +308,9 @@ async function spriteGrab(): Promise<void> {
 async function shinySpriteGrab(): Promise<void> {
     const spriteScreen = document.getElementById(`sprite`) as HTMLImageElement
     try {
-        const pokemonData = await fetchPokemon() 
+        const pokemonData: any = await fetchPokemon() 
 
-        const shinySprite = pokemonData.sprites.front_shiny;
+        const shinySprite: any = pokemonData.sprites.front_shiny;
         spriteScreen.src = shinySprite
 
     }
