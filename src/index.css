@@ -10,6 +10,7 @@
         --grey: hsl(0, 0%, 55%);
         --white: hsl(0, 0%, 88%);
 
+        --light-blue: hsl(190, 100%, 75%);
         --blue: hsl(190, 100%, 50%);
         --blue-gradient: hsl(190, 100%, 40%);
         --dark-blue: hsl(190, 100%, 35%);
@@ -62,4 +63,44 @@
     0%   { opacity: 0.20; }
     50%  { opacity: 0.30; }
     100% { opacity: 0.20; }
+}
+
+@keyframes blue-light-flicker {
+    0%   { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    22%  { opacity: 1; box-shadow: 0 0 80px 20px var(--blue-gradient); }
+    40%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    52%  { opacity: 1; box-shadow: 0 0 80px 20px var(--blue-gradient); }
+    60%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    75%  { opacity: 1; box-shadow: 0 0 80px 20px var(--blue-gradient); }
+    100% { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+}
+
+@keyframes red-light-flicker {
+    0%   { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    22%  { opacity: 1; box-shadow: 0 0 80px 20px var(--red-light-gradient); }
+    40%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    52%  { opacity: 1; box-shadow: 0 0 80px 20px var(--red-light-gradient); }
+    60%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    75%  { opacity: 1; box-shadow: 0 0 80px 20px var(--red-light-gradient); }
+    100% { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+}
+
+@keyframes yellow-light-flicker {
+    0%   { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    22%  { opacity: 1; box-shadow: 0 0 80px 20px var(--yellow-light-gradient); }
+    40%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    52%  { opacity: 1; box-shadow: 0 0 80px 20px var(--yellow-light-gradient); }
+    60%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    75%  { opacity: 1; box-shadow: 0 0 80px 20px var(--yellow-light-gradient); }
+    100% { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+}
+
+@keyframes green-light-flicker {
+    0%   { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    22%  { opacity: 1; box-shadow: 0 0 80px 20px var(--green-light-gradient); }
+    40%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    52%  { opacity: 1; box-shadow: 0 0 80px 20px var(--green-light-gradient); }
+    60%  { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
+    75%  { opacity: 1; box-shadow: 0 0 80px 20px var(--green-light-gradient); }
+    100% { opacity: 0; box-shadow: 0 0 80px 20px transparent; }
 }
