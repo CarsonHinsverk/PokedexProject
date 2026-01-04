@@ -5,7 +5,9 @@ import 'solid-devtools';
 
 import Pokedex from './open';
 
-export default function closedPokedex(): JSXElement {
+// JSX Element producing the closed Pokedex
+
+export default function ClosedPokedex(): JSXElement {
     return (
         /* Pokedex Container */
         <button id="pokedex" onClick={openDex} class="relative h-[800px] w-[500px] flex cursor-pointer
@@ -66,17 +68,16 @@ export default function closedPokedex(): JSXElement {
     );
 };
 
+const opened: HTMLAudioElement = new Audio('/sounds/opened.ogg');
+
+// Opens the Pokedex when clicked
+
 function openDex(): void {
-    const root: HTMLElement | null = document.getElementById('root');
+    const root = document.getElementById('root') as HTMLElement;
+    opened.play();
 
-    if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
-        throw new Error(
-            'Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?',
-        );
-    }
-
-    const dispose = render(() => <Pokedex />, document.getElementById("root") as HTMLElement);
+    const dispose = render(() => <ClosedPokedex />, root);
     dispose();
 
-    render(() => <Pokedex />, document.getElementById("root") as HTMLElement);
+    render(() => <Pokedex />, root);
 }

@@ -39,8 +39,13 @@ You can deploy the `dist` folder to any static host provider (netlify, surge, no
 ## Provides the interactive interface of a Pokedex
 
 #Tools Used:
-1. SolidJS
-2. Typescript
-3. TailwindCSS
-4. CSS
-5. HTML
+1. HTML
+2. CSS
+3. Typescript
+4. SolidJS
+5. TailwindCSS
+6. Tauri 
+
+#Credits:
+1. Icons - Yominou
+2. Sounds - www.kenney.nl and freesound_community

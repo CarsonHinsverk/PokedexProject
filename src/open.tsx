@@ -3,17 +3,18 @@ import './index.css';
 import { render } from 'solid-js/web';
 import 'solid-devtools';
 
-import Pokedex from './closed';
+import ClosedPokedex from './closed';
 
-let acceptedChoice = false;
+// JSX Element producing the opened Pokedex
 
-export default function openPokedex(): JSXElement {
+export default function OpenPokedex(): JSXElement {
     return (
         /* Pokedex Container */
         <div id="pokedex" class="relative h-[800px] w-[1000px] flex
 
             before:content-[''] before:fixed before:h-[100%] before:w-[100%] before:left-0 before:top-0 
             before:bg-[radial-gradient(circle_at_center,_#00000000_0%,_#000000cc_80%)] before:pointer-events-none before:z-[100]">
+            {/* Before attributes create a stylized vignette */}
 
             {/* Left Side of Pokedex */}
             <div id="left-side" class="relative h-[100%] w-[50%] left-[0%] top-[0%] border-[2.5px] border-solid border-[var(--black)] rounded-tl-[20px] 
@@ -21,6 +22,7 @@ export default function openPokedex(): JSXElement {
 
                 before:absolute before:h-[18%] before:w-[27%] before:left-[1.5%] before:top-[1.5%] before:rounded-[50%] before:z-[2] before:content-['']
                 before:bg-[var(--white)] before:shadow-[0_3px_6px_2px_var(--dark-red)] before:border-[2.5px] before:border-solid before:border-[var(--black)]">
+                {/* Before attributes create a second border for the blue light */}
 
                 {/* Hinge */} 
                 <div id="hinge" onClick={closeDex} class="absolute h-[84.5%] w-[15%] right-[-0.5%] top-[16%] border-[2.5px] border-[var(--black)] 
@@ -28,31 +30,35 @@ export default function openPokedex(): JSXElement {
 
                 {/* Big Blue Light */}
                 <div id="blue-light" class="absolute h-[16%] w-[24%] left-[3%] top-[2.5%] rounded-[50%] bg-[var(--screen-black)] 
-                    hover:before:animate-[blue-light-flicker_1s_steps(1)_infinite_alternate] hover:shadow-none transition duration-200 ease-in-out z-[3]
+                    transition duration-200 ease-in-out z-[3]
 
                     before:absolute before:h-[100%] before:w-[100%] before:left-[0] before:top-[0] before:rounded-[50%]
-                    before:transition-opacity before:duration-100 before:opacity-0"/>
+                    before:transition-opacity before:duration-100 before:opacity-0" onMouseEnter={flickerStart} onMouseLeave={flickerStop}/>
+                    {/* Before attributes set the stage for a glow effect */}
 
                 {/* Red, Yellow, and Green Lights */}
                 <div id="lights" class="relative h-[3.5%] w-[20%] top-[2.5%] left-[35%]">
 
                     <div id="red-light" class="absolute h-[100%] w-[25%] left-[0%] top-[0%] rounded-[50%] bg-[var(--black)] 
-                        hover:before:animate-[red-light-flicker_1s_steps(1)_infinite_alternate] hover:shadow-none transition duration-200 ease-in-out z-[3]
+                        transition duration-200 ease-in-out z-[3]
                         
                         before:absolute before:h-[100%] before:w-[100%] before:left-[0] before:top-[0] before:rounded-[50%]
-                        before:transition-opacity before:duration-100 before:opacity-0"/>
+                        before:transition-opacity before:duration-100 before:opacity-0" onMouseEnter={flickerStart} onMouseLeave={flickerStop}/>
+                        {/* Before attributes set the stage for a glow effect */}
                     
                     <div id="yellow-light" class="absolute h-[100%] w-[25%] left-[50%] top-[0%] rounded-[50%] bg-[var(--black)] 
-                        hover:before:animate-[yellow-light-flicker_1s_steps(1)_infinite_alternate] hover:shadow-none transition duration-200 ease-in-out z-[3]
+                        transition duration-200 ease-in-out z-[3]
                         
                         before:absolute before:h-[100%] before:w-[100%] before:left-[0] before:top-[0] before:rounded-[50%]
-                        before:transition-opacity before:duration-100 before:opacity-0"/>
+                        before:transition-opacity before:duration-100 before:opacity-0" onMouseEnter={flickerStart} onMouseLeave={flickerStop}/>
+                        {/* Before attributes set the stage for a glow effect */}
 
                     <div id="green-light" class="absolute h-[100%] w-[25%] left-[100%] top-[0%] rounded-[50%] bg-[var(--black)] 
-                        hover:before:animate-[green-light-flicker_1s_steps(1)_infinite_alternate] hover:shadow-none transition duration-200 ease-in-out z-[3]
+                        transition duration-200 ease-in-out z-[3]
                         
                         before:absolute before:h-[100%] before:w-[100%] before:left-[0] before:top-[0] before:rounded-[50%]
-                        before:transition-opacity before:duration-100 before:opacity-0"/> 
+                        before:transition-opacity before:duration-100 before:opacity-0" onMouseEnter={flickerStart} onMouseLeave={flickerStop}/> 
+                        {/* Before attributes set the stage for a glow effect */}
 
                 </div>
 
@@ -82,8 +88,9 @@ export default function openPokedex(): JSXElement {
                         after:content-[''] after:absolute after:inset-0 after:pointer-events-none after:z-[400] after:opacity-0
                         after:bg-[linear-gradient(to_bottom,rgba(0,0,0,0.25)_1px,rgba(0,0,0,0)_1px)] after:bg-[length:100%_3px]
                         after:animate-[screen-flicker_0.10s_infinite]">
+                        {/* After attributes create the effect of CRT scanlines */}
 
-                        <img id="sprite" src="../../images/emptysquare.png" class="absolute w-full h-full inset-0 object-contain z-[300]"/>
+                        <img id="sprite" src="/images/emptysquare.png" class="absolute w-full h-full inset-0 object-contain z-[300]"/>
 
                     </div>
 
@@ -131,6 +138,7 @@ export default function openPokedex(): JSXElement {
                     
             </div>
 
+            {/* Right Side of Pokedex */}
             <div id="right-side" class="absolute h-[75.8%] w-[50.2%] right-0 bottom-0 border-[2.5px] border-solid border-[var(--black)] rounded-tr-[20px] 
                 rounded-br-[20px] bg-[var(--dark-red)] transition duration-500 ease-in
                 
@@ -139,42 +147,45 @@ export default function openPokedex(): JSXElement {
                 
                 after:absolute after:w-[18.3%] after:h-[13%] after:left-[35.7%] after:top-[-7.5%] after:bg-[var(--dark-red)] after:border-t-[2.5px] after:border-t-[solid] 
                 after:border-t-[var(--black)] after:rotate-[45deg] after:z-[1]">
+                {/* Before and After attributes create the ridge at the top of the right side */}
 
+                {/* Right-side screen */}
                 <div id="side-screen" class="relative w-[85%] h-[20%] left-[7.5%] top-[10%] bg-[var(--screen-black)] rounded-[5px] text-base text-[var(--screen-green)] break-normal 
                     p-[10px] z-[200]"/>
 
+                {/* Buttons */}
                 <div id="blue-buttons" class="absolute grid grid-rows-2 grid-cols-5 w-[85%] h-[20%] left-[7.5%] top-[35%] bg-[var(--black)]
                     shadow-[0_3px_6px_2px_var(--dark-red)] z-[3]">
 
                     <div id="blue-button1" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getCategory}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getCategory} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button2" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getHeight}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getHeight} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button3" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getWeight}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getWeight} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button4" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getHp}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getHp} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button5" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getAttack}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getAttack} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button6" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getDefense}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getDefense} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button7" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getSpecialAttack}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getSpecialAttack} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button8" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getSpecialDefense}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getSpecialDefense} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button9" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getSpeed}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={getSpeed} onMouseOver={() => buttonHover.play()}/>
 
                     <div id="blue-button10" class="relative w-[100%] h-[100%] bg-[var(--dark-blue)] border-[2.5px] border-[solid] border-[var(--black)] 
-                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={playCry}/>
+                            cursor-pointer hover:bg-[var(--blue)] transition ease-in-out duration-200 z-[4]" onClick={playCry} onMouseOver={() => buttonHover.play()}/>
 
                 </div>
 
@@ -196,11 +207,13 @@ export default function openPokedex(): JSXElement {
 
                 </div>
 
+                {/* Final lights and screens */}
                 <div id="right-yellow-light" class="absolute h-[8%] w-[9%] right-[8%] top-[68%] rounded-[50%] bg-[var(--black)] 
-                    hover:before:animate-[yellow-light-flicker_1s_steps(1)_infinite_alternate] hover:shadow-none transition duration-200 ease-in-out z-[3]
+                    transition duration-200 ease-in-out z-[3]
                     
                     before:absolute before:h-[100%] before:w-[100%] before:left-[0] before:top-[0] before:rounded-[50%]
-                    before:transition-opacity before:duration-100 before:opacity-0"/>
+                    before:transition-opacity before:duration-100 before:opacity-0" onMouseEnter={flickerStart} onMouseLeave={flickerStop}/>
+                    {/* Before elements set the stage for a glow effect */}
 
                 <div id="small-screens" class="absolute flex justify-between w-[85%] h-[12%] left-[7.5%] top-[81%]">
 
@@ -220,55 +233,34 @@ export default function openPokedex(): JSXElement {
     );
 };
 
+let acceptedChoice = false; // Variable keeping track of whether the user has entered and selected a valid Pokemon
+
+const on: HTMLAudioElement = new Audio('/sounds/on.ogg');
+const off: HTMLAudioElement = new Audio('/sounds/off.ogg');
+const crtStatic: HTMLAudioElement = new Audio('/sounds/static.mp3');
+crtStatic.loop = true
+const closed: HTMLAudioElement = new Audio('/sounds/closed.ogg');
+
+// Bloses the Pokedex when the hinge is clicked
+
 function closeDex(): void {
-        const root: HTMLElement | null = document.getElementById('root');
-    
-        if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
-            throw new Error(
-                'Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?',
-            );
-        }
-    
-        const dispose = render(() => <Pokedex />, document.getElementById("root") as HTMLElement);
+        const root = document.getElementById('root') as HTMLElement;
+        closed.play();
+        crtStatic.pause();
+        crtStatic.currentTime = 0;
+
+        const dispose = render(() => <OpenPokedex />, root);
         dispose();
+        acceptedChoice = false;
     
-        render(() => <Pokedex />, document.getElementById("root") as HTMLElement);
+        render(() => <ClosedPokedex />, root);
 }
 
+// Plays on, off, and static audio cues, creates and attaches the keydown events for both the Enter and Backspace keys to select 
+// and remove a Pokemon from the system, adjusts CSS styling to match the on/off states, and erases all info when the power 
+// state changes
+
 async function powerToggle(): Promise<void> {
-    document.addEventListener('keydown', async (event) => {
-        if(event.key === 'Enter') {
-            setTypes();
-            try {
-                const pokemonData: any = await fetchPokemon();
-
-                const sprite: any = pokemonData.sprites.front_default;
-                spriteScreen.src = sprite;
-
-                const response: Response = await fetch(pokemonData.species.url);
-                const speciesData: any = await response.json();
-
-                let category: string = "";
-                let num = 0;
-                while(category == "") {
-                    if(speciesData.genera[num].language.name == "en") {
-                        category = speciesData.genera[num].genus;
-                    }
-                    num += 1
-                }
-                sideScreen.textContent = `The ${category}`
-            }
-            catch {
-                spriteScreen.src = "../../images/emptysquare.png";
-                sideScreen.textContent = "";
-            }
-            
-            if(spriteScreen.src !== "../../images/emptysquare.png") {
-                acceptedChoice = true;
-            }
-        }
-    });
-
     const mainScreen = document.getElementById(`main-screen`) as HTMLElement;
     const spriteScreen = document.getElementById(`sprite`) as HTMLImageElement;
     const blueLight = document.getElementById(`blue-light`) as HTMLElement;
@@ -279,8 +271,63 @@ async function powerToggle(): Promise<void> {
     const leftSide = document.getElementById(`left-side`) as HTMLElement;
     const rightSide = document.getElementById(`right-side`) as HTMLElement;
     const hinge = document.getElementById(`hinge`) as HTMLElement;
+    const nameInput = document.getElementById(`name-input`) as HTMLInputElement;
+    const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
+    const smallScreenLeft = document.getElementById(`small-screen-l`) as HTMLElement;
+    const smallScreenRight = document.getElementById(`small-screen-r`) as HTMLElement;
+
+    const handler = async (event: KeyboardEvent) => {
+            if(event.key === 'Enter') {
+                setTypes();
+                try {
+                    const pokemonData: any = await fetchPokemon();
+
+                    const sprite: any = pokemonData.sprites.front_default;
+                    spriteScreen.src = sprite;
+
+                    const response: Response = await fetch(pokemonData.species.url);
+                    const speciesData: any = await response.json();
+
+                    let category: string = "";
+                    let num = 0;
+                    while(category == "") {
+                        if(speciesData.genera[num].language.name == "en") {
+                            category = speciesData.genera[num].genus;
+                        }
+                        num += 1
+                    }
+                    sideScreen.textContent = `The ${category}`
+
+                    const confirm: HTMLAudioElement = new Audio('/sounds/confirmation.ogg');
+                    confirm.play();
+                }
+                catch {
+                    const error: HTMLAudioElement = new Audio('/sounds/error.ogg');
+                    error.play();
+
+                    spriteScreen.src = "/images/emptysquare.png";
+                    sideScreen.textContent = "";
+                }   
+                if(spriteScreen.src !== "/images/emptysquare.png") {
+                    acceptedChoice = true;
+                } else { acceptedChoice = false; }
+            }
+            if(event.key === "Backspace") {
+                acceptedChoice = false;
+                spriteScreen.src = "/images/emptysquare.png";
+                nameInput.value = "";
+                sideScreen.textContent = "";
+                smallScreenLeft.textContent = "";
+                smallScreenRight.textContent = "";
+            }
+        }
 
     if(mainScreen.classList.contains('bg-[var(--screen-black)]')) {
+        on.play();
+        crtStatic.play();
+
+        document.addEventListener('keydown', handler);
+
         mainScreen.classList.remove('bg-[var(--screen-black)]', 'after:opacity-0', 'before:opacity-0')
         mainScreen.classList.add('bg-[var(--white)]', 'shadow-[0_0_60px_20px_var(--white)]')
 
@@ -305,9 +352,15 @@ async function powerToggle(): Promise<void> {
         hinge.classList.add('bg-gradient-to-r', 'from-[var(--red)]', 'via-[var(--light-red)]', 'via-[var(--red)]', 'to-[var(--dark-red)]')
     }
     else {
+        off.play();
+        crtStatic.pause();
+        crtStatic.currentTime = 0;
+
+        document.removeEventListener('keydown', handler);
+
         mainScreen.classList.remove('bg-[var(--white)]', 'shadow-[0_0_60px_20px_var(--white)]')
         mainScreen.classList.add('bg-[var(--screen-black)]', 'after:opacity-0', 'before:opacity-0')
-        spriteScreen.src = "../../images/emptysquare.png" 
+        spriteScreen.src = "/images/emptysquare.png" 
 
         blueLight.classList.remove('shadow-[0_0_80px_20px_var(--blue-gradient)]', 'z-[200]', 'before:opacity-100',
             'before:bg-[radial-gradient(circle_at_center,_var(--white)_10%,_var(--blue)_40%,_var(--blue-gradient)_50%)]')
@@ -330,23 +383,46 @@ async function powerToggle(): Promise<void> {
         hinge.classList.remove('bg-gradient-to-r', 'from-[var(--red)]', 'via-[var(--light-red)]', 'via-[var(--red)]', 'to-[var(--dark-red)]')
     }
 
-    const nameInput = document.getElementById(`name-input`) as HTMLInputElement;
-    const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
-    const smallScreenLeft = document.getElementById(`small-screen-l`) as HTMLElement;
-    const smallScreenRight = document.getElementById(`small-screen-r`) as HTMLElement;
-
+    acceptedChoice = false;
     nameInput.value = "";
     sideScreen.textContent = "";
     smallScreenLeft.textContent = "";
     smallScreenRight.textContent = "";
 }
 
+// Checks the power status of the Pokedex
+
 function isOn(): Boolean {
     const mainScreen = document.getElementById(`main-screen`) as HTMLElement;
     if(mainScreen.classList.contains('bg-[var(--white)]')) {
         return true;
-    } else { return false }
+    } else { return false; }
 }
+
+const lightFlicker: HTMLAudioElement = new Audio('/sounds/light_flicker.mp3');
+lightFlicker.loop = true;
+
+// Events for light flicker audio cues when mousing over active light elements
+
+function flickerStart(event: MouseEvent): void {
+    if(isOn()) {
+        lightFlicker.play();
+
+        const element = event.currentTarget as HTMLElement;
+        element.classList.add(`flicker-${element.id}`, `hover:shadow-none`);
+    }
+}
+
+function flickerStop(event: MouseEvent): void {
+    if(isOn()) {
+        lightFlicker.pause();
+
+        const element = event.currentTarget as HTMLElement;
+        element.classList.remove(`flicker-${element.id}`, `hover:shadow-none`);
+    }
+}
+
+// Interacts with the API to retrieve info about the selected Pokemon
 
 async function fetchPokemon(): Promise<any> {
     if(isOn()) {
@@ -360,17 +436,22 @@ async function fetchPokemon(): Promise<any> {
     }
 }
 
+const spriteSwitch: HTMLAudioElement = new Audio('/sounds/sprite_switch.ogg');
+
+// Changes the sprite of the Pokemon appearing on the main screen
+
 async function spriteGrab(): Promise<void> {
     if(acceptedChoice === true) {
         const spriteScreen = document.getElementById(`sprite`) as HTMLImageElement;
         try {
             const pokemonData: any = await fetchPokemon();
 
+            spriteSwitch.play();
             const sprite: any = pokemonData.sprites.front_default;
             spriteScreen.src = sprite;
         }
         catch {
-            spriteScreen.src = "../../images/emptysquare.png";
+            spriteScreen.src = "/images/emptysquare.png";
         }
     }
 }
@@ -381,19 +462,24 @@ async function shinySpriteGrab(): Promise<void> {
         try {
             const pokemonData: any = await fetchPokemon();
 
+            spriteSwitch.play();
             const shinySprite: any = pokemonData.sprites.front_shiny;
             spriteScreen.src = shinySprite;
         }
         catch {
-            spriteScreen.src = "../../images/emptysquare.png";
+            spriteScreen.src = "/images/emptysquare.png";
         }
     }
 }
+
+// Helper function to capitalize type names
 
 function capitalize(word: string): string {
     const firstChar = word[0].toUpperCase();
     return firstChar + word.slice(1);
 }
+
+// Gets and sets the types of the selected Pokemon to the small screens on the right
 
 async function setTypes(): Promise<void> {
     const leftSmallScreen = document.getElementById(`small-screen-l`) as HTMLElement;
@@ -415,8 +501,16 @@ async function setTypes(): Promise<void> {
     }
 }
 
+// The following functions are attached to the numerous blue buttons and 
+// retrieve different info about the selected Pokemon 
+
+const buttonPush: HTMLAudioElement = new Audio('/sounds/button_push.ogg');
+const buttonFail: HTMLAudioElement = new Audio('/sounds/button_fail.ogg');
+const buttonHover: HTMLAudioElement = new Audio('/sounds/button_hover.ogg');
+
 async function getCategory(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try {
             const pokemonData: any = await fetchPokemon();
@@ -436,11 +530,12 @@ async function getCategory(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getHeight(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -451,11 +546,12 @@ async function getHeight(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getWeight(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -466,11 +562,12 @@ async function getWeight(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getHp(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -481,11 +578,12 @@ async function getHp(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getAttack(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -496,11 +594,12 @@ async function getAttack(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getDefense(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -511,11 +610,12 @@ async function getDefense(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getSpecialAttack(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -526,11 +626,12 @@ async function getSpecialAttack(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getSpecialDefense(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -541,11 +642,12 @@ async function getSpecialDefense(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function getSpeed(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon() ;
@@ -556,11 +658,12 @@ async function getSpeed(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 async function playCry(): Promise<void> {
     if(acceptedChoice === true) {
+        buttonPush.play();
         const sideScreen = document.getElementById(`side-screen`) as HTMLElement;
         try{
             const pokemonData: any = await fetchPokemon();
@@ -572,7 +675,7 @@ async function playCry(): Promise<void> {
         catch {
             sideScreen.textContent = "";
         }
-    }
+    } else { buttonFail.play(); }
 }
 
 
