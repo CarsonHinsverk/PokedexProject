@@ -28,6 +28,10 @@ You can deploy the `dist` folder to any static host provider (netlify, surge, no
 
 ## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
 
+# Future Planned Changes
+1. Adding a home screen
+2. Using Three.js or another 3D rendering library to create a 3D Pokedex interface
+
 # Further Credits:
 1. Icons - Yominou
 2. Sounds - www.kenney.nl and freesound_community
